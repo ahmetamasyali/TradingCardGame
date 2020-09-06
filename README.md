@@ -6,7 +6,7 @@ Used technologies : Java 14, Spring Boot, Spring Data Jpa, PostgreSQL, Junit, Mo
 
 There is a simple user interface. You can click on cards and play
 
-![screenshot]("/images/screenshot.png")
+![screenshot](/images/screenshot.png)
 
 Application is deployed to Digital Ocean. If you want to see the game without running :
 
