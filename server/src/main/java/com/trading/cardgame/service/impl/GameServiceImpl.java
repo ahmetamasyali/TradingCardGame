@@ -61,6 +61,8 @@ public class GameServiceImpl implements GameService
 
         changeTurnOfGame(game);
 
+        changeTurnUntilNextPlayerCanPlayCard(game);
+
         return saveGame(game);
     }
 
@@ -78,18 +80,15 @@ public class GameServiceImpl implements GameService
                 .findFirst()
                 .orElse(null);
 
-        dealDamageWithCard(game, selectedCard);
-
-        game.getPlayerByTurn().getHand().remove(selectedCard);
+        if (selectedCard != null)
+        {
+            dealDamageWithCard(game, selectedCard);
+            game.getPlayerByTurn().getHand().remove(selectedCard);
+        }
 
         checkGameIsEnded(game);
 
-        while(isPlayerUnableToPlayAnyCard(game))
-        {
-            changeTurnOfGame(game);
-
-            checkGameIsEnded(game);
-        }
+        changeTurnUntilNextPlayerCanPlayCard(game);
 
         saveGame(game);
     }
@@ -103,7 +102,19 @@ public class GameServiceImpl implements GameService
 
         changeTurnOfGame(game);
 
+        changeTurnUntilNextPlayerCanPlayCard(game);
+
         saveGame(game);
+    }
+
+    private void changeTurnUntilNextPlayerCanPlayCard(Game game)
+    {
+        while(isPlayerUnableToPlayAnyCard(game))
+        {
+            changeTurnOfGame(game);
+
+            checkGameIsEnded(game);
+        }
     }
 
     private boolean isPlayerUnableToPlayAnyCard(Game game)

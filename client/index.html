@@ -9,13 +9,13 @@
             border: 1px;
             border-style: dotted;
             padding-right: 4px;
-            margin-left: 2px;
-            margin-right: 2px;
+            padding-left: 3px;
             cursor: pointer;
         }
 
-        .hand :first-child {
-             padding-left: 3px;
+        .card-wrapper {
+            margin-left: 2px;
+            margin-right: 2px;
         }
     </style>
 </head>
@@ -32,7 +32,7 @@
     <span> Mana : {{game.firstPlayerMana}}</span>
 
     <div class="hand"> Hand :
-        <span class="cart" ng-repeat="card in game.firstPlayerHand"> <a ng-click="playCard(card.cardId, 'FIRST_PLAYER')">{{card.manaCost}}</a></span>
+        <span class="card-wrapper" ng-repeat="card in game.firstPlayerHand"> <a class="cart" ng-click="playCard(card.cardId, 'FIRST_PLAYER')">{{card.manaCost}}</a></span>
     </div>
 
     <div> Deck :
@@ -46,7 +46,7 @@
     <span> Mana : {{game.secondPlayerMana}}</span>
 
     <div class="hand"> Hand :
-        <span class="cart"  ng-repeat="card in game.secondPlayerHand"> <a ng-click="playCard(card.cardId, 'SECOND_PLAYER')">{{card.manaCost}}</a></span>
+        <span class="card-wrapper"  ng-repeat="card in game.secondPlayerHand"> <a class="cart" ng-click="playCard(card.cardId, 'SECOND_PLAYER')">{{card.manaCost}}</a></span>
     </div>
 
     <div> Deck :
