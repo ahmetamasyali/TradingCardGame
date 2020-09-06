@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+
+  client:
+    build: ./client
+    ports:
+      - 4200:80
+    networks:
+      - cardGameNetwork
+
+  server:
+    build: ./server
+    ports:
+    - 8080:8080
+    networks:
+     - cardGameNetwork
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - cardGameNetwork
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8083:8080
+    networks:
+      - cardGameNetwork
+
+networks:
+  cardGameNetwork:
+     driver: bridge

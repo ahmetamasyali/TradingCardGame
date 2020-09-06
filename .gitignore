@@ -3,4 +3,6 @@
 cardgame.iml
 mvnw
 mvnw.cmd
-target/*
+server/target
+server/target/*
+server/target/test-classes/*

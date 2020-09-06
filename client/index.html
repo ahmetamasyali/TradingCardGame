@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+        .cart {
+            border: 1px;
+            border-style: dotted;
+            padding-right: 4px;
+            margin-left: 2px;
+            margin-right: 2px;
+            cursor: pointer;
+        }
+
+        .hand :first-child {
+             padding-left: 3px;
+        }
+    </style>
+</head>
+<body ng-controller="controller">
+
+    <button type="button" ng-click="skipTurn()">Skip Turn</button>
+    <button type="button" ng-click="newGame()">New Game</button>
+
+    <p ng-show="game.status!='ENDED'"> Turn : {{game.turn}}</p>
+    <p ng-show="game.status=='ENDED'"> Game Finished!  Winner is :  {{game.winner}}</p>
+
+    <p>First Player</p>
+    <span> Health : {{game.firstPlayerHealth}}</span>
+    <span> Mana : {{game.firstPlayerMana}}</span>
+
+    <div class="hand"> Hand :
+        <span class="cart" ng-repeat="card in game.firstPlayerHand"> <a ng-click="playCard(card.cardId, 'FIRST_PLAYER')">{{card.manaCost}}</a></span>
+    </div>
+
+    <div> Deck :
+        <span ng-repeat="card in game.firstPlayerDeck"> {{card.manaCost}}</span>
+    </div>
+
+    <br><br>
+
+    <p>Second Player</p>
+    <span> Health : {{game.secondPlayerHealth}}</span>
+    <span> Mana : {{game.secondPlayerMana}}</span>
+
+    <div class="hand"> Hand :
+        <span class="cart"  ng-repeat="card in game.secondPlayerHand"> <a ng-click="playCard(card.cardId, 'SECOND_PLAYER')">{{card.manaCost}}</a></span>
+    </div>
+
+    <div> Deck :
+        <span ng-repeat="card in game.secondPlayerDeck"> {{card.manaCost}}</span>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
