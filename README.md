@@ -4,7 +4,9 @@ for running the app just enter "docker-compose up" and application will be runni
 
 Used technologies : Java 14, Spring Boot, Spring Data Jpa, PostgreSQL, Junit, Mockito, Docker
 
-There is a simple user interface. You can click on cards in the boxes and play
+There is a simple user interface. You can click on cards in the boxes for playing
+
+If users mana is not enough for playing any card in his hand, turn will automatically change until a player can play a card.
 
 ![screenshot](/images/screenshot.png)
 
