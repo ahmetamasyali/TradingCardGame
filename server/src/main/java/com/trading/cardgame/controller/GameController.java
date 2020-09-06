@@ -18,7 +18,6 @@ import com.trading.cardgame.util.JsonResponse;
 import com.trading.cardgame.views.GameView;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class GameController
 {
     @Autowired
